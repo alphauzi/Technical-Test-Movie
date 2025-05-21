@@ -15,16 +15,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="458" height="611"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VkK-ld-f3b">
-                        <rect key="frame" x="-21" y="-44.666666666666686" width="500" height="700.33333333333348"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkK-ld-f3b">
+                        <rect key="frame" x="0.0" y="0.0" width="458" height="611"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="VkK-ld-f3b" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-21" id="8bZ-qQ-8UN"/>
-                <constraint firstItem="VkK-ld-f3b" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ez8-MJ-6aK"/>
-                <constraint firstItem="VkK-ld-f3b" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="NVg-K8-hWw"/>
-                <constraint firstItem="VkK-ld-f3b" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="-44.666666666666686" id="dGa-kr-VFd"/>
+                <constraint firstAttribute="trailing" secondItem="VkK-ld-f3b" secondAttribute="trailing" id="GI9-zG-90x"/>
+                <constraint firstItem="VkK-ld-f3b" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IrD-xO-jLu"/>
+                <constraint firstItem="VkK-ld-f3b" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ee9-Fe-Ygg"/>
+                <constraint firstAttribute="bottom" secondItem="VkK-ld-f3b" secondAttribute="bottom" id="sdL-Ay-yby"/>
             </constraints>
             <size key="customSize" width="458" height="611"/>
             <connections>

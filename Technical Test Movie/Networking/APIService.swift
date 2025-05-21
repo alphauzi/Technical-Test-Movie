@@ -10,30 +10,33 @@ import Moya
 
 enum ApiService{
     case nowPlaying(page: Int)
+    case trailer(id: Int)
 }
 
 extension ApiService: TargetType{
     var baseURL: URL {
         return URL(string: "https://api.themoviedb.org/3")!
     }
-    
+
     var path: String {
         switch self{
         case .nowPlaying:
             return "/movie/now_playing"
+        case .trailer(let id):
+            return "/movie/\(id)/videos"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .nowPlaying:
+        case .nowPlaying, .trailer:
             return .get
         }
     }
     
     var sampleData: Data{
         switch self {
-        case .nowPlaying:
+        case .nowPlaying, .trailer:
             return Data()
         }
     }
@@ -45,6 +48,13 @@ extension ApiService: TargetType{
                 parameters: [
                     "language": "en-US",
                     "page": page,
+                    "api_key": "898ad7c5f67300351bbf111191d3b3aa"
+                ], encoding: URLEncoding.default
+            )
+        case .trailer:
+            return .requestParameters(
+                parameters: [
+                    "language": "en-US",
                     "api_key": "898ad7c5f67300351bbf111191d3b3aa"
                 ], encoding: URLEncoding.default
             )

@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FM-yf-SWd">
-                    <rect key="frame" x="15" y="74" width="363" height="30"/>
+                    <rect key="frame" x="15" y="59" width="363" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-U2-rbl">
-                    <rect key="frame" x="15" y="124" width="363" height="674"/>
+                    <rect key="frame" x="15" y="104" width="363" height="728"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="laU-kS-1gB">
                         <size key="itemSize" width="128" height="128"/>
@@ -36,15 +36,15 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <viewLayoutGuide key="safeArea" id="jif-4W-nxE"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="3FM-yf-SWd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="JCY-x7-yuU"/>
+                <constraint firstItem="3FM-yf-SWd" firstAttribute="top" secondItem="jif-4W-nxE" secondAttribute="top" id="JCY-x7-yuU"/>
                 <constraint firstItem="RvY-U2-rbl" firstAttribute="leading" secondItem="3FM-yf-SWd" secondAttribute="leading" id="VIJ-Bz-z3C"/>
-                <constraint firstItem="3FM-yf-SWd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="ZAi-Fg-bgX"/>
-                <constraint firstItem="RvY-U2-rbl" firstAttribute="top" secondItem="3FM-yf-SWd" secondAttribute="bottom" constant="20" id="l10-ei-WIy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3FM-yf-SWd" secondAttribute="trailing" constant="15" id="mvn-Gu-aFy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RvY-U2-rbl" secondAttribute="bottom" constant="20" id="wBh-vf-4ba"/>
+                <constraint firstItem="3FM-yf-SWd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="ZAi-Fg-bgX"/>
+                <constraint firstItem="RvY-U2-rbl" firstAttribute="top" secondItem="3FM-yf-SWd" secondAttribute="bottom" constant="15" id="l10-ei-WIy"/>
+                <constraint firstAttribute="trailing" secondItem="3FM-yf-SWd" secondAttribute="trailing" constant="15" id="mvn-Gu-aFy"/>
+                <constraint firstAttribute="bottom" secondItem="RvY-U2-rbl" secondAttribute="bottom" constant="20" id="wBh-vf-4ba"/>
                 <constraint firstItem="RvY-U2-rbl" firstAttribute="trailing" secondItem="3FM-yf-SWd" secondAttribute="trailing" id="xzQ-YH-EJS"/>
             </constraints>
             <point key="canvasLocation" x="53" y="26"/>

@@ -20,8 +20,8 @@ class MovieItemCollectionViewCell: UICollectionViewCell {
     func setupItem(data: Movie) {
         layer.cornerRadius = 10
           
-        let imgURL = data.backdropPath ?? ""
-        if let imgURL = URL(string: "https://image.tmdb.org/t/p/w500" + imgURL) {
+        let imgURL = data.posterPath ?? ""
+        if let imgURL = URL(string: "https://image.tmdb.org/t/p/w200" + imgURL) {
             self.coverImageView.sd_setImage(with: imgURL, placeholderImage: UIImage(systemName: "movieclapper.fill"))
         }
     }

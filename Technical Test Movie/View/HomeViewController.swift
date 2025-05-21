@@ -25,8 +25,7 @@ class HomeViewController: UIViewController {
         collectionView.dataSource = self
         
         viewModel.fetchUsers(page: 1)
-        viewModel.movieResponse
-        .subscribe(onNext: { [weak self] movies in
+        viewModel.movieResponse.subscribe(onNext: { [weak self] movies in
             self?.movies = movies
             self?.collectionView.reloadData()
         })
@@ -54,7 +53,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width / 2) - 25, height: 250)
+        return CGSize(width: (UIScreen.main.bounds.width / 2) - 25, height: 290)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

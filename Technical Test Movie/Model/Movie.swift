@@ -19,7 +19,8 @@ struct Movie: Codable {
     let backdropPath, overview, posterPath, releaseDate: String?
     let title: String?
     let voteAverage: Double?
-    let voteCount: Int?
+    let voteCount, id: Int?
+    let popularity: Double?
 
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
@@ -29,5 +30,7 @@ struct Movie: Codable {
         case title
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case id
+        case popularity
     }
 }

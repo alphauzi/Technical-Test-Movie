@@ -6,16 +6,79 @@
 //
 
 import UIKit
+import RxSwift
+import WebKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var trailerWebView: WKWebView!
+    @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var popularityLabel: UILabel!
+    @IBOutlet weak var releaseLabel: UILabel!
+    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    
     var movie: Movie?
-
+    private var viewModel = DetailViewModel()
+    private var bag = DisposeBag()
+    
+    var trailer: Trailer? = nil
+    var trailerKey = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = movie?.title
+        guard let movie = movie else { return }
+        self.setupUI()
         
+        viewModel.fetchTrailer(id: movie.id ?? 0)
+        viewModel.trailerResponse.subscribe(onNext: { [weak self] trailer in
+            self?.trailer = trailer.first
+            if let key = self?.trailer?.key{
+                self?.trailerKey = key
+            }
+        })
+        .disposed(by: bag)
     }
-
+    
+    func setupUI() {
+        guard let movie = movie else { return }
+        trailerWebView.isHidden = true
+        titleLabel.text = movie.title
+        popularityLabel.text = String("\(movie.voteCount ?? 0) votes")
+        releaseLabel.text = String("\(movie.releaseDate ?? "")")
+        overviewLabel.text = String("\(movie.overview ?? "")")
+        playButton.layer.cornerRadius = 15
+        playButton.clipsToBounds = true
+        
+        let rating = String(format: "★ %.2f", movie.voteAverage ?? 0)
+        ratingLabel.text = "" + rating + "       "
+        ratingLabel.textColor = .white
+        ratingLabel.backgroundColor = .red
+        ratingLabel.layer.cornerRadius = 5
+        ratingLabel.layer.masksToBounds = true
+        ratingLabel.textAlignment = .center
+        
+        let imgURL = movie.backdropPath ?? ""
+        if let imgURL = URL(string: "https://image.tmdb.org/t/p/w500" + imgURL) {
+            self.thumbnailView.sd_setImage(with: imgURL, placeholderImage: UIImage(systemName: "movieclapper.fill"))
+        }
+    }
+    
+    @IBAction func playButton(_ sender: Any) {
+        playYouTube(key: trailerKey)
+    }
+    
+    func playYouTube(key: String) {
+        trailerWebView.isHidden = false
+        thumbnailView.isHidden = true
+        
+        let embedHTML = """
+           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/\(key)?playsinline=1&autoplay=1" 
+               frameborder="0" allowfullscreen></iframe>
+           """
+        trailerWebView.loadHTMLString(embedHTML, baseURL: nil)
+    }
+    
 }
