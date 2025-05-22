@@ -11,6 +11,7 @@ import WebKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var trailerWebView: WKWebView!
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -71,6 +72,10 @@ class DetailViewController: UIViewController {
         playYouTube(key: trailerKey)
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension DetailViewController{
@@ -89,6 +94,9 @@ extension DetailViewController{
     
     func setupUI() {
         guard let movie = movie else { return }
+        self.navigationController?.navigationBar.isHidden = true
+        self.backButton.layer.cornerRadius = 15
+        
         trailerWebView.isHidden = true
         titleLabel.text = movie.title
         popularityLabel.text = String("\(movie.voteCount ?? 0) votes")

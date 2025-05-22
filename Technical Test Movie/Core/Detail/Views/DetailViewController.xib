@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Technical_Test_Movie" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="qro-B0-Auj" id="opV-EV-YIO"/>
                 <outlet property="playButton" destination="xea-QJ-sNG" id="NBU-Jm-q4a"/>
                 <outlet property="popularityLabel" destination="nNe-WB-qK1" id="lj5-3s-4FB"/>
                 <outlet property="ratingLabel" destination="Tcc-YC-JFL" id="e8y-25-AFn"/>
@@ -82,11 +83,21 @@
                         <action selector="playButton:" destination="-1" eventType="touchUpInside" id="rio-79-LVP"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jBa-3U-gfh">
-                    <rect key="frame" x="16" y="452" width="361" height="366"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jBa-3U-gfh">
+                    <rect key="frame" x="15" y="441" width="363" height="396"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qro-B0-Auj" userLabel="back button">
+                    <rect key="frame" x="15" y="70" width="78" height="35"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="Back">
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="backButton:" destination="-1" eventType="touchUpInside" id="TsI-me-f8z"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
@@ -97,15 +108,21 @@
                 <constraint firstItem="nNe-WB-qK1" firstAttribute="centerY" secondItem="Tcc-YC-JFL" secondAttribute="centerY" id="8xJ-Qn-CGE"/>
                 <constraint firstItem="eUF-nD-2kR" firstAttribute="top" secondItem="wov-IZ-Efy" secondAttribute="top" id="Aub-eD-Pxc"/>
                 <constraint firstAttribute="trailing" secondItem="xea-QJ-sNG" secondAttribute="trailing" constant="15" id="Ba3-4V-sQh"/>
+                <constraint firstItem="jBa-3U-gfh" firstAttribute="top" secondItem="xea-QJ-sNG" secondAttribute="bottom" constant="15" id="CVK-C2-xBp"/>
                 <constraint firstItem="wov-IZ-Efy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FOe-BX-QHD"/>
+                <constraint firstItem="qro-B0-Auj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="JZI-M2-fDo"/>
                 <constraint firstItem="eue-4Y-FF4" firstAttribute="leading" secondItem="nNe-WB-qK1" secondAttribute="trailing" constant="15" id="TAE-jc-LLs"/>
                 <constraint firstItem="c7l-m1-cei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="TtM-rh-18J"/>
                 <constraint firstAttribute="trailing" secondItem="wov-IZ-Efy" secondAttribute="trailing" id="aC1-ob-v6l"/>
                 <constraint firstItem="Tcc-YC-JFL" firstAttribute="leading" secondItem="c7l-m1-cei" secondAttribute="leading" id="asb-lT-IAw"/>
                 <constraint firstItem="c7l-m1-cei" firstAttribute="top" secondItem="wov-IZ-Efy" secondAttribute="bottom" constant="15" id="bmC-CV-izE"/>
+                <constraint firstItem="jBa-3U-gfh" firstAttribute="leading" secondItem="xea-QJ-sNG" secondAttribute="leading" id="huc-uu-qBK"/>
                 <constraint firstItem="wov-IZ-Efy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lht-oh-Pkp"/>
                 <constraint firstItem="eue-4Y-FF4" firstAttribute="centerY" secondItem="nNe-WB-qK1" secondAttribute="centerY" id="lnr-yw-20p"/>
+                <constraint firstItem="jBa-3U-gfh" firstAttribute="trailing" secondItem="xea-QJ-sNG" secondAttribute="trailing" id="p8w-Tv-crU"/>
                 <constraint firstItem="eUF-nD-2kR" firstAttribute="leading" secondItem="wov-IZ-Efy" secondAttribute="leading" id="pmU-Mj-Esw"/>
+                <constraint firstAttribute="bottom" secondItem="jBa-3U-gfh" secondAttribute="bottom" constant="15" id="pwV-Ks-65u"/>
+                <constraint firstItem="qro-B0-Auj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="qqj-rO-Gto"/>
                 <constraint firstAttribute="trailing" secondItem="c7l-m1-cei" secondAttribute="trailing" constant="15" id="s1E-1p-s6e"/>
                 <constraint firstItem="xea-QJ-sNG" firstAttribute="top" secondItem="Tcc-YC-JFL" secondAttribute="bottom" constant="15" id="sX4-mu-VNs"/>
                 <constraint firstItem="eUF-nD-2kR" firstAttribute="trailing" secondItem="wov-IZ-Efy" secondAttribute="trailing" id="v6V-Tz-KT9"/>
@@ -115,6 +132,7 @@
         </view>
     </objects>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="play.fill" catalog="system" width="120" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

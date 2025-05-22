@@ -19,7 +19,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.isHidden = true
+        
         collectionView.register(MovieItemCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
