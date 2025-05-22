@@ -18,8 +18,20 @@ class DetailViewModel {
     var trailerResponse = PublishSubject<[Trailer]>()
     var reviewResponse = PublishSubject<[Review]>()
     
+    var page: Int = 1
+    var isLastPage = false
+    var requesting = false
+    
     init(service: MoyaProvider<ApiService> = MoyaProvider<ApiService>()) {
         self.provider = service
+    }
+    
+    func loadMore(id: Int) {
+        if self.requesting { return }
+        if self.isLastPage == false {
+            self.page += 1
+            self.fetchReview(id: id)
+        }
     }
     
     func fetchTrailer(id: Int) {
@@ -41,13 +53,19 @@ class DetailViewModel {
         .disposed(by: bag)
     }
     
-    func fetchReview(id: Int, page: Int) {
+    func fetchReview(id: Int) {
+        if self.requesting { return }
+        self.requesting = true
         provider.rx.request(.review(id: id, page: page)).subscribe{[weak self] result in
+            self?.requesting = false
             switch result{
             case .success(let response):
                 do {
                     let filterResponse = try response.filterSuccessfulStatusCodes()
                     let reviewResponse = try filterResponse.map(ReviewResponse.self, using: JSONDecoder())
+                    if let totalPage = reviewResponse.totalPages, let page = self?.page{
+                        self?.isLastPage = page >= totalPage
+                    }
                     self?.reviewResponse.onNext(reviewResponse.reviews)
                 } catch let error {
                     print(error.localizedDescription)

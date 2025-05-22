@@ -9,9 +9,11 @@ import Foundation
 
 struct MovieResponse: Codable{
     let movies: [Movie]
+    let totalPages: Int?
     
     private enum CodingKeys: String, CodingKey {
         case movies = "results"
+        case totalPages = "total_pages"
     }
 }
 

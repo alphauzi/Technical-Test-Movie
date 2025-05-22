@@ -9,9 +9,11 @@ import Foundation
 
 struct ReviewResponse: Codable {
     let reviews: [Review]
+    let totalPages: Int?
     
     private enum CodingKeys: String, CodingKey {
         case reviews = "results"
+        case totalPages = "total_pages"
     }
 }
 

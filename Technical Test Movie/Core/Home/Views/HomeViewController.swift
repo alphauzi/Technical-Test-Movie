@@ -24,9 +24,9 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        viewModel.fetchUsers(page: 1)
+        viewModel.fetchMovie()
         viewModel.movieResponse.subscribe(onNext: { [weak self] movies in
-            self?.movies = movies
+            self?.movies.append(contentsOf: movies)
             self?.collectionView.reloadData()
         })
         .disposed(by: bag)
@@ -59,4 +59,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
           return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
       }
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.checkLoadMore()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        self.checkLoadMore()
+    }
+    
+    func checkLoadMore() -> Void {
+        let indexPaths = self.collectionView.indexPathsForVisibleItems
+        guard let lastIndexPath = indexPaths.last else { return }
+        if lastIndexPath.section == 0 {
+            self.viewModel.loadMore()
+        }
+    }
 }

@@ -45,11 +45,11 @@ class DetailViewController: UIViewController {
             })
             .disposed(by: bag)
             
-            viewModel.fetchReview(id: movieId, page: 1)
+            viewModel.fetchReview(id: movieId)
             viewModel.reviewResponse
                 .subscribe(onNext: { [weak self] review in
                     guard let self = self else { return }
-                    self.reviews = review
+                    self.reviews.append(contentsOf: review)
                     self.tableView.reloadData()
                 })
                 .disposed(by: bag)
@@ -150,6 +150,24 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.configure()
                 return cell
             }
+        }
+    }
+}
+
+extension DetailViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.checkLoadMore()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        self.checkLoadMore()
+    }
+    
+    func checkLoadMore() -> Void {
+        let indexPaths = self.tableView.indexPathsForVisibleRows
+        guard let lastIndexPath = indexPaths?.last, let movieId = movie?.id else { return }
+        if lastIndexPath.section == 0 {
+            self.viewModel.loadMore(id: movieId)
         }
     }
 }
