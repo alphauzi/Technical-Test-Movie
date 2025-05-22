@@ -55,12 +55,21 @@ class DetailViewController: UIViewController {
                 .disposed(by: bag)
         }
         
+        viewModel.errorMessage
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                let vc = PopupViewController()
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .overFullScreen
+                self?.navigationController?.present(vc, animated: true)
+            })
+            .disposed(by: bag)
+        
     }
     
     @IBAction func playButton(_ sender: Any) {
         playYouTube(key: trailerKey)
     }
-    
     
 }
 

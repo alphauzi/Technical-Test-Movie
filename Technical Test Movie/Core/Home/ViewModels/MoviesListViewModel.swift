@@ -16,6 +16,7 @@ class MoviesListViewModel {
     private var bag = DisposeBag()
     
     var movieResponse = PublishSubject<[Movie]>()
+    let errorMessage = PublishSubject<Void>()
     
     var page: Int = 1
     var isLastPage = false
@@ -50,9 +51,8 @@ class MoviesListViewModel {
                 } catch let error {
                     print(error.localizedDescription)
                 }
-             
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self?.errorMessage.onNext(())
             }
         }
         .disposed(by: bag)

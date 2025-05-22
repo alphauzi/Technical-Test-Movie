@@ -11,17 +11,22 @@ import SDWebImage
 class MovieItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var shimmerCoverView: ShimmerView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layer.cornerRadius = 10
+        self.coverImageView.isHidden = true
+        self.shimmerCoverView.startAnimating()
     }
     
     func setupItem(data: Movie) {
-        self.layer.cornerRadius = 10
-          
         let imgURL = data.posterPath ?? ""
         if let imgURL = URL(string: "https://image.tmdb.org/t/p/w200" + imgURL) {
-            self.coverImageView.sd_setImage(with: imgURL, placeholderImage: UIImage(systemName: "movieclapper.fill"))
+            self.coverImageView.sd_setImage(with: imgURL) { _, _, _, _ in
+                self.shimmerCoverView.isHidden = true
+                self.coverImageView.isHidden = false
+            }
         }
     }
     

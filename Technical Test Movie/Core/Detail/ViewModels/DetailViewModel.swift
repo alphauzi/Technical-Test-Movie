@@ -17,6 +17,7 @@ class DetailViewModel {
     
     var trailerResponse = PublishSubject<[Trailer]>()
     var reviewResponse = PublishSubject<[Review]>()
+    let errorMessage = PublishSubject<Void>()
     
     var page: Int = 1
     var isLastPage = false
@@ -46,8 +47,8 @@ class DetailViewModel {
                     print(error.localizedDescription)
                 }
              
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self?.errorMessage.onNext(())
             }
         }
         .disposed(by: bag)
@@ -71,8 +72,8 @@ class DetailViewModel {
                     print(error.localizedDescription)
                 }
              
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self?.errorMessage.onNext(())
             }
         }
         .disposed(by: bag)
