@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Technical_Test_Movie" customModuleProvider="target">
             <connections>
-                <outlet property="overviewLabel" destination="otP-pw-Dp6" id="jKQ-aw-tr8"/>
                 <outlet property="playButton" destination="xea-QJ-sNG" id="NBU-Jm-q4a"/>
                 <outlet property="popularityLabel" destination="nNe-WB-qK1" id="lj5-3s-4FB"/>
                 <outlet property="ratingLabel" destination="Tcc-YC-JFL" id="e8y-25-AFn"/>
                 <outlet property="releaseLabel" destination="eue-4Y-FF4" id="Gpd-JY-5Ic"/>
+                <outlet property="tableView" destination="jBa-3U-gfh" id="0Hy-4M-78U"/>
                 <outlet property="thumbnailView" destination="wov-IZ-Efy" id="qbr-m5-yHi"/>
                 <outlet property="titleLabel" destination="c7l-m1-cei" id="6hq-uk-5Wy"/>
                 <outlet property="trailerWebView" destination="eUF-nD-2kR" id="zgK-xm-H96"/>
@@ -68,13 +68,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otP-pw-Dp6" userLabel="overview">
-                    <rect key="frame" x="15" y="440.99999999999994" width="363" height="162.33333333333331"/>
-                    <string key="text">Four misfits find themselves struggling with ordinary problems when they are suddenly pulled through a mysterious portal into the Overworld: a bizarre, cubic wonderland that thrives on imagination. To get back home, they'll have to master this world while embarking on a magical quest with an unexpected, expert crafter, Steve.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xea-QJ-sNG">
                     <rect key="frame" x="15" y="391" width="363" height="35"/>
                     <state key="normal" title="Button"/>
@@ -89,6 +82,11 @@
                         <action selector="playButton:" destination="-1" eventType="touchUpInside" id="rio-79-LVP"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jBa-3U-gfh">
+                    <rect key="frame" x="16" y="452" width="361" height="366"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
@@ -100,12 +98,9 @@
                 <constraint firstItem="eUF-nD-2kR" firstAttribute="top" secondItem="wov-IZ-Efy" secondAttribute="top" id="Aub-eD-Pxc"/>
                 <constraint firstAttribute="trailing" secondItem="xea-QJ-sNG" secondAttribute="trailing" constant="15" id="Ba3-4V-sQh"/>
                 <constraint firstItem="wov-IZ-Efy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FOe-BX-QHD"/>
-                <constraint firstItem="otP-pw-Dp6" firstAttribute="trailing" secondItem="xea-QJ-sNG" secondAttribute="trailing" id="HD9-D9-o1e"/>
-                <constraint firstItem="otP-pw-Dp6" firstAttribute="top" secondItem="xea-QJ-sNG" secondAttribute="bottom" constant="15" id="MYR-ko-a6a"/>
                 <constraint firstItem="eue-4Y-FF4" firstAttribute="leading" secondItem="nNe-WB-qK1" secondAttribute="trailing" constant="15" id="TAE-jc-LLs"/>
                 <constraint firstItem="c7l-m1-cei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="TtM-rh-18J"/>
                 <constraint firstAttribute="trailing" secondItem="wov-IZ-Efy" secondAttribute="trailing" id="aC1-ob-v6l"/>
-                <constraint firstItem="otP-pw-Dp6" firstAttribute="leading" secondItem="xea-QJ-sNG" secondAttribute="leading" id="afg-Qu-EAg"/>
                 <constraint firstItem="Tcc-YC-JFL" firstAttribute="leading" secondItem="c7l-m1-cei" secondAttribute="leading" id="asb-lT-IAw"/>
                 <constraint firstItem="c7l-m1-cei" firstAttribute="top" secondItem="wov-IZ-Efy" secondAttribute="bottom" constant="15" id="bmC-CV-izE"/>
                 <constraint firstItem="wov-IZ-Efy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lht-oh-Pkp"/>
@@ -116,7 +111,7 @@
                 <constraint firstItem="eUF-nD-2kR" firstAttribute="trailing" secondItem="wov-IZ-Efy" secondAttribute="trailing" id="v6V-Tz-KT9"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eue-4Y-FF4" secondAttribute="trailing" id="wjG-Hp-v8R"/>
             </constraints>
-            <point key="canvasLocation" x="59" y="-12"/>
+            <point key="canvasLocation" x="58.778625954198468" y="-12.67605633802817"/>
         </view>
     </objects>
     <resources>

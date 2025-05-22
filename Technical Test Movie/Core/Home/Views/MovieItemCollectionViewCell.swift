@@ -9,7 +9,6 @@ import UIKit
 import SDWebImage
 
 class MovieItemCollectionViewCell: UICollectionViewCell {
-    static let cellId = "MovieItemCollectionViewCell"
     
     @IBOutlet weak var coverImageView: UIImageView!
     
@@ -18,7 +17,7 @@ class MovieItemCollectionViewCell: UICollectionViewCell {
     }
     
     func setupItem(data: Movie) {
-        layer.cornerRadius = 10
+        self.layer.cornerRadius = 10
           
         let imgURL = data.posterPath ?? ""
         if let imgURL = URL(string: "https://image.tmdb.org/t/p/w200" + imgURL) {

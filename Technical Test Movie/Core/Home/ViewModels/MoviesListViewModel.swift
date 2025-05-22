@@ -12,10 +12,14 @@ import RxMoya
 
 class MoviesListViewModel {
     
-    private let provider = MoyaProvider<ApiService>()
+    private let provider: MoyaProvider<ApiService>
     private var bag = DisposeBag()
     
     var movieResponse = PublishSubject<[Movie]>()
+    
+    init(service: MoyaProvider<ApiService> = MoyaProvider<ApiService>()) {
+        self.provider = service
+    }
     
     func fetchUsers(page: Int) {
         provider.rx.request(.nowPlaying(page: page)).subscribe{[weak self] result in

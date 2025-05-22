@@ -16,5 +16,5 @@ struct TrailerResponse: Codable{
 }
 
 struct Trailer: Codable {
-    let name, key: String
+    let name, key: String?
 }
