@@ -96,6 +96,7 @@ extension DetailViewController{
         guard let movie = movie else { return }
         self.navigationController?.navigationBar.isHidden = true
         self.backButton.layer.cornerRadius = 15
+        self.trailerWebView.configuration.allowsInlineMediaPlayback = true
         
         trailerWebView.isHidden = true
         titleLabel.text = movie.title
@@ -125,9 +126,8 @@ extension DetailViewController{
         thumbnailView.isHidden = true
         
         let embedHTML = """
-           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/\(key)?playsinline=1&autoplay=1" 
-               frameborder="0" allowfullscreen></iframe>
-           """
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/\(key)?playsinline=1&autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        """
         trailerWebView.loadHTMLString(embedHTML, baseURL: nil)
     }
     

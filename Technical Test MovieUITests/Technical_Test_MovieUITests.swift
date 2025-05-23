@@ -14,7 +14,7 @@ final class Technical_Test_MovieUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
+    func testSuccess_notLostConnction() throws {
         let app = XCUIApplication()
         app.launch()
         
