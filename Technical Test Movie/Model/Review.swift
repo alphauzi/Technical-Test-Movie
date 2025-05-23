@@ -21,14 +21,13 @@ struct ReviewResponse: Codable {
 struct Review: Codable {
     let author: String?
     let authorDetails: AuthorDetails?
-    let content, createdAt, id: String?
+    let content, createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case author
         case authorDetails = "author_details"
         case content
         case createdAt = "created_at"
-        case id
     }
 }
 
