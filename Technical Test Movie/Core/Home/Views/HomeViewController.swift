@@ -25,12 +25,12 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        viewModel.fetchMovie()
         viewModel.movieResponse.subscribe(onNext: { [weak self] movies in
             self?.movies.append(contentsOf: movies)
             self?.collectionView.reloadData()
         })
         .disposed(by: bag)
+        viewModel.fetchMovie()
         
         viewModel.errorMessage
             .observe(on: MainScheduler.instance)
@@ -72,12 +72,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 extension HomeViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.checkLoadMore()
-    }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.checkLoadMore()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let scrollViewHeight = scrollView.frame.size.height
+
+        if offsetY > contentHeight - scrollViewHeight - 100 {
+            self.checkLoadMore()
+        }
     }
     
     func checkLoadMore() -> Void {

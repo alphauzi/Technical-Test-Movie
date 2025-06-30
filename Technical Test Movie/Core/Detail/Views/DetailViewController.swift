@@ -37,7 +37,6 @@ class DetailViewController: UIViewController {
         self.configuretableView()
         
         if let movieId = movie.id {
-            viewModel.fetchTrailer(id: movieId)
             viewModel.trailerResponse.subscribe(onNext: { [weak self] trailer in
                 self?.trailer = trailer.first
                 if let key = self?.trailer?.key{
@@ -45,8 +44,8 @@ class DetailViewController: UIViewController {
                 }
             })
             .disposed(by: bag)
+            viewModel.fetchTrailer(id: movieId)
             
-            viewModel.fetchReview(id: movieId)
             viewModel.reviewResponse
                 .subscribe(onNext: { [weak self] review in
                     guard let self = self else { return }
@@ -54,6 +53,7 @@ class DetailViewController: UIViewController {
                     self.tableView.reloadData()
                 })
                 .disposed(by: bag)
+            viewModel.fetchReview(id: movieId)
         }
         
         viewModel.errorMessage
