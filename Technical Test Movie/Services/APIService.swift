@@ -45,7 +45,7 @@ extension ApiService: TargetType{
     }
     
     var task: Moya.Task {
-        let tokenAPI = Bundle.main.infoDictionary?["TOKEN_API"] as? String
+        let tokenAPI = Bundle.main.infoDictionary?["TOKEN_API"]
 
         switch self{
         case .nowPlaying(let page), .review(_, let page):
@@ -53,14 +53,14 @@ extension ApiService: TargetType{
                 parameters: [
                     "language": "en-US",
                     "page": page,
-                    "api_key": "\(String(describing: tokenAPI))"
+                    "api_key": "\(tokenAPI ?? "")"
                 ], encoding: URLEncoding.default
             )
         case .trailer:
             return .requestParameters(
                 parameters: [
                     "language": "en-US",
-                    "api_key": "\(String(describing: tokenAPI))"
+                    "api_key": "\( tokenAPI ?? "")"
                 ], encoding: URLEncoding.default
             )
         }
