@@ -2,7 +2,8 @@
 
 📌 Note
 1. Before running this project, make sure you have created a Config.xcconfig file.
-2. Add the following line to your Config.xcconfig file, replacing xxx with your actual token:
+2. you can sign in / sign up this [link](https://www.themoviedb.org) to get your own token
+3. Add the following line to your Config.xcconfig file, replacing xxx with your actual token:
    ```
    Config.xcconfig
    TOKEN_API = your_api_token_here
